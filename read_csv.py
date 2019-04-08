@@ -18,4 +18,22 @@ class ReadFiles:
             
         return data_list
 
+    
+    # Same as upper fuction but this will only return list..
+    
+    def read_files(file, filename):
+        data_list =[]  
+        with open(file, 'r') as data_file:  
+            lines = data_file.readlines()
+            for line in lines[2:]:
+                if line != '\n' and line.find('<') < 0:
+                    data = line.strip().split(',')
+                    if data[1] != '':
+                        data_list.append(int(data[1]))
+                        
+            # Find the maximum temp from Max TempC 
+            found = Max.find(data_list)
+            
+        return data_list
+
   

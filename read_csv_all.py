@@ -9,7 +9,7 @@ class Find:
         li = []
         for filename in os.listdir(DATA_DIR):
             file = os.path.join(DATA_DIR, filename)
-            if hottest_temp == Max.find(ReadFiles.read_csv_files(file, filename)):
+            if hottest_temp == Max.find(ReadFiles.read_files(file, filename)):
                 li.append(filename)
         
         return print(f"The overall Hottest Temperature is:- {hottest_temp} at months:- {li}")
