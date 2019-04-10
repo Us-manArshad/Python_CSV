@@ -32,8 +32,14 @@ class Weather():
                     data = line.strip().split(',')
                     if data[1] != '':
                         data_list.append(int(data[1]))
-            # Find the maximum temp from Max TempC 
-            max_temp_val = self.search_max(data_list)
+            # Find the maximum temp from Max TempC
+            max_temp_val=0
+            for i in range(len(data_list[:])):
+                if data_list[i] == '':
+                    pass
+                else:
+                    max_temp_val = max(data_list)
+           
             print(f"List of Temperature of Month {filename} is :""\n" f"{data_list}")
             print(f"Hottest Temperature in {filename} is : {max_temp_val}","\n")
         return max_temp_val
@@ -49,8 +55,14 @@ class Weather():
                     if data[1] != '':
                         data_list.append(int(data[1]))
             # Find the maximum temp from Max TempC 
-            max_temp_val = self.search_max(data_list)
+            max_temp_val=0
+            for i in range(len(data_list[:])):
+                if data_list[i] == '':
+                    pass
+                else:
+                    max_temp_val = max(data_list)
         return max_temp_val
+
        
 if __name__ == "__main__":
     # Weather class object 
