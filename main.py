@@ -12,7 +12,6 @@ class Weather():
                 max_val = li[i]
         return max_val
 
-
     # Method to find hottest temperature from all files
     def search_all_files(self, DATA_DIR, hottest_temp):
         li = []
@@ -21,7 +20,6 @@ class Weather():
             if hottest_temp == self.read_files(file, filename):
                 li.append(filename)
         print(f"\n""Hottest Temperature of all Weather Data is : ",hottest_temp, "at month:")
-
         return li
 
     # Read files and print maximum value of inputed weather month
@@ -34,16 +32,12 @@ class Weather():
                     data = line.strip().split(',')
                     if data[1] != '':
                         data_list.append(int(data[1]))
-                        
             # Find the maximum temp from Max TempC 
             found = self.search_max(data_list)
             print(f"List of Temperature of Month {filename} is :""\n" f"{data_list}")
-            
             print(f"Hottest Temperature in {filename} is : {found}","\n")
-            
         return data_list
 
-    
     # Same as upper fuction but this will only return maximum temp..
     def read_files(self, file, filename):
         data_list =[]
@@ -54,14 +48,10 @@ class Weather():
                     data = line.strip().split(',')
                     if data[1] != '':
                         data_list.append(int(data[1]))
-                        
             # Find the maximum temp from Max TempC 
             found = self.search_max(data_list)
-            
         return found
-    
-    
-    
+       
 if __name__ == "__main__":
     # Weather class object 
     weather = Weather() 
@@ -70,16 +60,9 @@ if __name__ == "__main__":
     DATA_DIR = os.path.join(ROOT_DIR, 'csv')
     for filename in os.listdir(DATA_DIR):
         file = os.path.join(DATA_DIR, filename)
-        
-        
+
         high_temp.append(weather.search_max(weather.read_csv_files(file, filename)))
         hottest_temp = weather.search_max(high_temp)
-            
-       
-            
+
        # To find month of hottest temperature.
     print(weather.search_all_files(DATA_DIR, hottest_temp))
-         
-
-
-        
