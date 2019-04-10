@@ -15,7 +15,8 @@ class Weather:
                     row = line.strip().split(',')
                     if row[1] != '':
                         size.append(int(row[1]))
-                #find max from li size        
+                #find max from li size
+                
                 maximum = self.find_max(size)
                 index_list = []
                 # it will print number indexes where maximum values are founds
@@ -24,8 +25,11 @@ class Weather:
                 index_date = []
                 for i in range(len(index_list)):
                     index_date.append(str(self.find(index_list[i], path)))
-        return "Maximum Temp of month:",filename," is: ",maximum, "at Dates: ", index_date
+                
+            print("Maximum Temp of month:",filename," is: ",maximum, "at Dates: ", index_date)
+        return maximum
 
+    
     def find(self, index, path):
         li,li1  = [],[]
         with open(path) as input_file:
@@ -39,6 +43,7 @@ class Weather:
         val = li[index]    
         return val
 
+
     def find_max(self,li):
         maximum = 0
         for i in range(len(li)):
@@ -46,6 +51,7 @@ class Weather:
                 maximum = li[i]
         return maximum
     
+
     def find_index(self, li):
         Maximum = self.find_max(li)
         index_list = []
@@ -56,11 +62,15 @@ class Weather:
     
 
 if __name__ == "__main__":
-    weather = Weather()        
+    weather = Weather()
+    max_list = []
+    max_temp_list = []
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     DATA_DIR = os.path.join(ROOT_DIR, 'csv')
     for filename in os.listdir(DATA_DIR):
         file = os.path.join(DATA_DIR, filename)
-        print(weather.read(file, filename))
         
-    print("End!!!!!!!!!")
+        max_list.append(weather.read(file, filename))
+        max_temp = max(max_list)
+        
+    print("The Hottset is: ", max_temp)
