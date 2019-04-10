@@ -24,9 +24,7 @@ class Weather:
                 index_date = []
                 for i in range(len(index_list)):
                     index_date.append(str(self.find(index_list[i], path)))
-        
-            return "Maximum Temp of month:",filename," is: ",maximum, "at Dates: ", index_date
-
+        return "Maximum Temp of month:",filename," is: ",maximum, "at Dates: ", index_date
 
     def find(self, index, path):
         li,li1  = [],[]
@@ -41,14 +39,12 @@ class Weather:
         val = li[index]    
         return val
 
-
     def find_max(self,li):
         maximum = 0
         for i in range(len(li)):
             if maximum <= li[i]:
                 maximum = li[i]
         return maximum
-
     
     def find_index(self, li):
         Maximum = self.find_max(li)
@@ -67,4 +63,4 @@ if __name__ == "__main__":
         file = os.path.join(DATA_DIR, filename)
         print(weather.read(file, filename))
         
-
+    print("End!!!!!!!!!")
