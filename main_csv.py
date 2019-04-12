@@ -9,6 +9,7 @@ class Weather:
     def read(self, path, filename):
         size  = []
         with open(path) as input_file:
+            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
@@ -16,10 +17,10 @@ class Weather:
                     if row[1] != '':
                         size.append(int(row[1]))
                 #find max from li size
-                maximum = self.find_max(size)
+                maximum = max(size)
                 index_list = []
                 # it will print number indexes where maximum values are founds
-                index_list = self.find_index(size)
+                index_list = self.find_index(size, maximum)
                 # It will print date of indexes
                 index_date = []
                 for i in range(len(index_list)):
@@ -30,6 +31,7 @@ class Weather:
     def find_date(self, index, path):
         li,li1  = [],[]
         with open(path) as input_file:
+            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
@@ -39,17 +41,8 @@ class Weather:
         val = li[index]    
         return val
 
-
-    def find_max(self,li):
-        maximum = 0
-        for i in range(len(li)):
-            if maximum <= li[i]:
-                maximum = li[i]
-        return maximum
-
     
-    def find_index(self, li):
-        maximum = self.find_max(li)
+    def find_index(self, li, maximum):
         index_list = []
         for i,j in enumerate(li):
             if j == maximum:
@@ -78,5 +71,5 @@ if __name__ == "__main__":
         if max_temp == maximum:
             max_temp_date.append(index_date)
             max_file_name.append(filename)
-    print("!---------------------------------------------Maximum Temperature--------------------------------------------------!")
-    print(f"The maximum temperature is: {max_temp} at day: {max_temp_date},\nfilenames: {max_file_name} Respectively.")
+        
+    print(f"The Hottset Temperature is: {max_temp} at day: {max_temp_date},\nfilenames: {max_file_name} Respectively.")
