@@ -62,5 +62,5 @@ if __name__ == "__main__":
 
     # To find month of hottest temperature.
     months_list = weather.search_all_files(DATA_DIR, max_temp)
-    print("\n--------------------------------------------------------------------------------")
-    print(f"The Hottest Temperature of all the files data is: {max_temp} at months: \n{months_list}")
+    print("\n!------------------------------Maximum Temperature-----------------------------------------!")
+    print(f"The maximum temperature of all the files data is: {max_temp} at months: \n{months_list}")
