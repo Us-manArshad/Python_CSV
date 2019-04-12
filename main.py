@@ -12,39 +12,19 @@ class Weather():
                 max_val = li[i]
         return max_val
 
+
     # Method to find hottest temperature from all files
     def search_all_files(self, DATA_DIR, max_temp):
-        li = []
+        months_list = []
         for filename in os.listdir(DATA_DIR):
             file = os.path.join(DATA_DIR, filename)
-            if max_temp == self.read_files(file, filename):
-                li.append(filename)
-        print(f"\n""Hottest Temperature of all Weather Data is:",max_temp, "at month:")
-        return li
+            (max_temp_val, data_list, filename) = weather.read_files(file, filename)
+            if max_temp == max_temp_val:
+                months_list.append(filename)
+        return months_list
+
 
     # Read files and print maximum value of inputed weather month
-    def read_csv_files(self, file, filename):
-        data_list =[]  
-        with open(file, 'r') as data_file:  
-            lines = data_file.readlines()
-            for line in lines[2:]:
-                if line != '\n' and line.find('<') < 0:
-                    data = line.strip().split(',')
-                    if data[1] != '':
-                        data_list.append(int(data[1]))
-            # Find the maximum temp from Max TempC
-            max_temp_val=0
-            for i in range(len(data_list[:])):
-                if data_list[i] == '':
-                    pass
-                else:
-                    max_temp_val = max(data_list)
-           
-            print(f"List of Temperature of Month {filename} is :""\n" f"{data_list}")
-            print(f"Hottest Temperature in {filename} is : {max_temp_val}","\n")
-        return max_temp_val
-
-    # Same as upper fuction but this will only return maximum temp..
     def read_files(self, file, filename):
         data_list =[]
         with open(file, 'r') as data_file:  
@@ -61,7 +41,7 @@ class Weather():
                     pass
                 else:
                     max_temp_val = max(data_list)
-        return max_temp_val
+        return max_temp_val, data_list, filename
 
        
 if __name__ == "__main__":
@@ -73,8 +53,14 @@ if __name__ == "__main__":
     for filename in os.listdir(DATA_DIR):
         file = os.path.join(DATA_DIR, filename)
 
-        temp_list.append(weather.read_csv_files(file, filename))
+        (max_temp_val, data_list, filename) = weather.read_files(file, filename)
+        temp_list.append(max_temp_val)
         max_temp = max(temp_list)
 
-       # To find month of hottest temperature.
-    print(weather.search_all_files(DATA_DIR, max_temp))
+        print(f"List of Temperature of Month {filename} is :""\n" f"{data_list}")
+        print(f"Hottest Temperature in {filename} is : {max_temp_val}","\n")
+
+    # To find month of hottest temperature.
+    months_list = weather.search_all_files(DATA_DIR, max_temp)
+    print("\n--------------------------------------------------------------------------------")
+    print(f"The Hottest Temperature of all the files data is: {max_temp} at months: \n{months_list}")
