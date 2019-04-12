@@ -9,7 +9,6 @@ class Weather:
     def read(self, path, filename):
         size  = []
         with open(path) as input_file:
-            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
@@ -31,7 +30,6 @@ class Weather:
     def find_date(self, index, path):
         li,li1  = [],[]
         with open(path) as input_file:
-            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
@@ -81,4 +79,4 @@ if __name__ == "__main__":
             max_temp_date.append(index_date)
             max_file_name.append(filename)
     print("!---------------------------------------------Maximum Temperature--------------------------------------------------!")
-    print(f"The Hottset Temperature is: {max_temp} at day: {max_temp_date},\nfilenames: {max_file_name} Respectively.")
+    print(f"The maximum temperature is: {max_temp} at day: {max_temp_date},\nfilenames: {max_file_name} Respectively.")
