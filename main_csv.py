@@ -9,7 +9,6 @@ class Weather:
     def read(self, path, filename):
         size  = []
         with open(path) as input_file:
-            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
@@ -17,7 +16,13 @@ class Weather:
                     if row[1] != '':
                         size.append(int(row[1]))
                 #find max from li size
-                maximum = max(size)
+                maximum = 0
+                for i in range(len(size)):
+                    if size[i] == "":
+                        pass
+                    else:
+                        maximum = max(size)
+                        
                 index_list = []
                 # it will print number indexes where maximum values are founds
                 index_list = self.find_index(size, maximum)
@@ -31,7 +36,6 @@ class Weather:
     def find_date(self, index, path):
         li,li1  = [],[]
         with open(path) as input_file:
-            reader = csv.reader(input_file)
             lines = input_file.readlines()
             for line in lines[2:]:
                 if line != '\n' and line.find('<') < 0:
