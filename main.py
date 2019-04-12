@@ -64,5 +64,5 @@ if __name__ == "__main__":
     (max_months_list,min_months_list) = weather.search_all_files(DATA_DIR, max_temp, min_temp)
     print("\n\n!----------------------------Maximum Temperature------------------------------!")
     print(f"The maximum temperature of all the files data is: {max_temp} at months: \n{max_months_list}")
-    print(f"The maximum temperature of all the files data is: {min_temp} at months: \n{min_months_list} \n")
+    print(f"The minimum temperature of maximum column of all the files data is: {min_temp} at months: \n{min_months_list} \n")
     print("Attention: Those fields which are empty are not included for transparency of data. !! Thank you")
