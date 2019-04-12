@@ -18,7 +18,6 @@ class Weather:
                         size.append(int(row[1]))
                 #find max from li size
                 maximum = self.find_max(size)
-
                 index_list = []
                 # it will print number indexes where maximum values are founds
                 index_list = self.find_index(size)
@@ -81,5 +80,5 @@ if __name__ == "__main__":
         if max_temp == maximum:
             max_temp_date.append(index_date)
             max_file_name.append(filename)
-        
+    print("!---------------------------------------------Maximum Temperature--------------------------------------------------!")
     print(f"The Hottset Temperature is: {max_temp} at day: {max_temp_date},\nfilenames: {max_file_name} Respectively.")
