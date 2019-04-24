@@ -12,7 +12,7 @@ class EnglishWords():
                     data = line.strip()
                     words_list.append(data)
             # Function call to find max length word and its length.
-            (word, word_length) = self.lenghthy_word(words_list)
+            (word, word_length) = self.lengthy_word(words_list)
             print(word, word_length)
 
             # Funtion call to find consonant and lenghty consonant.
@@ -21,7 +21,7 @@ class EnglishWords():
         return words_list
                     
     # Find the lenghty word from the word_list and its lenght.
-    def lenghthy_word(self, words_list):
+    def lengthy_word(self, words_list):
         sorted_words = sorted(words_list, key = len)
         return sorted_words[-1], len(sorted_words[-1])
 
