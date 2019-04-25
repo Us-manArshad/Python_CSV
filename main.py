@@ -7,10 +7,9 @@ class EnglishWords():
         words_list =[]
         with open(file, 'r') as data_file:  
             lines = data_file.readlines()
-            for line in lines[2:]:
-                if line != '\n' and line.find('<') < 0:
-                    data = line.strip()
-                    words_list.append(data)
+            for line in lines:
+                data = line.strip()
+                words_list.append(data)
             # Function call to find max length word and its length.
             (word, word_length) = self.lengthy_word(words_list)
             print(word, word_length)
