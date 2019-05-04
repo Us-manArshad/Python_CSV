@@ -28,11 +28,13 @@ class EnglishWords():
     def consonant_word(self, words_list):
         consonant_list = []
         for word in words_list:
-            vowels=0
-            for i in word:
-                if(i=='a' or i=='e' or i=='i' or i=='o' or i=='u'):
-                    vowels=vowels+1
-            if vowels == 0:
+            VOWELS = ['a','e','i','o','u']
+            vowels_count=0
+            for letter in word:
+                for vow in VOWELS:
+                    if letter == vow:
+                        vowels_count=vowels_count+1
+            if vowels_count == 0:
                 consonant_list.append(word)
         sorted_consonant_list = sorted(consonant_list, key = len)
         return sorted_consonant_list[-1], len(sorted_consonant_list[-1])
